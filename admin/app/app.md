@@ -41,6 +41,7 @@ http://admin.dandelionet.org/#!/login
 });
 ```
 Hàm run này nó thực hiện đầu tiên của app
+
 Ví dụ
  ```cpp
         .run(function() {
