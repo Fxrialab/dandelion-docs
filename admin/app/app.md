@@ -11,6 +11,20 @@ Config url cho app
 ```cpp
 Dandelion.config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider) {
+    }])
+```
+Tìm hiểu thêm tại
+
+```cpp
+https://docs.angularjs.org/api/ngRoute/provider/$routeProvider
+https://docs.angularjs.org/api/ng/provider/$locationProvider
+```
+
+Ví dụ 
+
+```cpp
+Dandelion.config(['$routeProvider', '$locationProvider',
+    function($routeProvider, $locationProvider) {
         $locationProvider.html5Mode(false).hashPrefix('!');
         $routeProvider.
                 when('/login', {
@@ -30,16 +44,7 @@ Dandelion.config(['$routeProvider', '$locationProvider',
             redirectTo: '/error'
         });
     }])
-```
-Tìm hiểu thêm tại
-
-```cpp
-https://docs.angularjs.org/api/ngRoute/provider/$routeProvider
-https://docs.angularjs.org/api/ng/provider/$locationProvider
-```
-
-Ví dụ 
-```cpp
+    
 http://admin.dandelionet.org/#!/login
 ```
 ```cpp
