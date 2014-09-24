@@ -31,6 +31,12 @@ Dandelion.config(['$routeProvider', '$locationProvider',
         });
     }])
 ```
+Tìm hiểu thêm tại
+
+```cpp
+https://docs.angularjs.org/api/ngRoute/provider/$routeProvider
+https://docs.angularjs.org/api/ng/provider/$locationProvider
+```
 
 Ví dụ 
 ```cpp
