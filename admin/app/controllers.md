@@ -55,11 +55,4 @@ api: login
                     ));    
 
 ```
-- $cookieStore.put('token', results.token): chế độ lưu cookie của angulajs khi đăng nhập
 
-```cpp
-Kiểm tra sự tồn tạ của token, nếu chưa có token thì nó sẽ quay lại trang login
-    if ($cookieStore.get('token')) {
-        $location.path();
-    }
-```
