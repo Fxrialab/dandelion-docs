@@ -413,3 +413,103 @@ Hiện thị chi tiết plugin trên modal
         });
     }
 ```
+
+
+theme.js
+
+#Theme
+
+Hiện thị danh sách themes
+
+```cp
+    function getData() {
+        Data.get('plugin').then(function(response) {
+            $scope.data = response;
+            var data = response;
+            $scope.tableParams = new ngTableParams({
+                page: 1, // show first page
+                count: 20          // count per page
+            }, {
+                total: data.length, // length of data
+                getData: function($defer, params) {
+                    $defer.resolve(data.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                }
+            });
+        });
+    }
+```
+
+Cài đặt theme
+
+```cp
+    $scope.install = function(data) {
+        Data.get('installPlugin?id=' + data).then(function(results) {
+            var data = results;
+        });
+    };
+```
+
+Remove theme
+
+```cp
+  $scope.remove = function(item) {
+        var modalInstance = $modal.open({
+            templateUrl: 'partials/comfirm.html',
+            controller: 'comfirmCtrl',
+            resolve: {
+                deleteItem: function() {
+                    return item;
+                }
+            }
+        });
+        modalInstance.result.then(function() {
+            reallyDelete(item);
+        });
+    };
+    var reallyDelete = function(item) {
+        Data.get('removePlugin?id=' + item + '&token=' + $cookieStore.get('token'), function(response) {
+            if (response.success == 'true')
+                $('.theme_' + response.id).remove();
+        });
+
+    };
+```
+Hiện thị chi tiết theme trên modal
+```cp
+    $scope.detail = function(id) {
+        var modalInstance = $modal.open({
+            templateUrl: 'partials/themes/viewdetail.html',
+            controller: 'detailPluginCtrl',
+            resolve: {
+                listItem: function() {
+                    return Data.get('detailPlugin?id=' + id + '&token=' + $cookieStore.get('token'));
+                }
+            }
+        });
+    }
+```
+
+upload.js
+
+Upload plugin, theme
+
+```cp
+        function($scope, $http, $filter, $window, $cookieStore, Data) {
+            $scope.options = {
+                url: 'api/uploadTheme',
+            };
+            $scope.file = function() {
+                var data = {
+                    token: $cookieStore.get('token'),
+                    name: $scope.queue.title,
+                    file_name: $scope.queue.filename,
+                    file_size: $scope.queue.filesize,
+                    description: $scope.queue.description
+                };
+                Data.post('saveTheme', data).then(function(results) {
+                    Data.toast(results);
+
+                });
+            };
+        }
+```
