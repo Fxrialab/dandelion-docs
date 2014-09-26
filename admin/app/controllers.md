@@ -133,3 +133,85 @@ $scope.doProfile = function(data) {
     };
 ```  
 Cập nhật thông tin profile
+
+
+user.js
+
+# Lists Users
+```cpp
+    Data.get('users?token=' + $routeParams.token).then(function(results) {
+        var data = results;
+        $scope.tableParams = new ngTableParams({
+            page: 1, // show first page
+            count: 10, // count per page
+            sorting: {
+                name: 'asc', // initial sorting
+                email: 'asc', // initial sorting
+            },
+            filter: {
+                name: '', // initial filter
+                email: ''       // initial filter
+            }
+        }, {
+            total: data.length, // length of data
+            getData: function($defer, params) {
+                // use build-in angular filter
+                var orderedData = params.sorting ?
+                        $filter('orderBy')(data, params.orderBy()) :
+                        data;
+                orderedData = params.filter ?
+                        $filter('filter')(orderedData, params.filter()) :
+                        orderedData;
+
+                $scope.users = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
+
+                params.total(orderedData.length); // set total for recalc pagination
+                $defer.resolve($scope.users);
+            }
+        });
+    });
+    
+```
+Lấy tất cả các thành viên đã đăng ký, hiện thị ra view html, trong đó có cơ chế tìm kiếm, sắp xếp, phân trang, các bạn vào trang http://bazalt-cms.com/ng-table/example/1/ để tìm hiểu thêm.
+
+```cpp
+    $scope.active = function(id) {
+        Data.get('useractive?id=' + id + '&token=' + $cookieStore.get('token')).then(function(results) {
+            $('.user_' + results.id).html(results.status);
+        });
+    }
+```
+Dùng để quản lý user, nếu status bằng true thì user đó sẽ hoạt động, ngược lại thì không.
+
+# Detail user
+
+```cpp
+    Data.get('user?id=' + $routeParams.id + '&token=' + $routeParams.token).then(function(results) {
+        $scope.user = results.user;
+        var data = results.status;
+        $scope.tableParams = new ngTableParams({
+            page: 1, // show first page
+            count: 10          // count per page
+        }, {
+            total: data.length, // length of data
+            getData: function($defer, params) {
+                $defer.resolve(data.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+            }
+        });
+        var com = results.comment;
+        $scope.tableComment = new ngTableParams({
+            page: 1, // show first page
+            count: 10          // count per page
+        }, {
+            total: com.length, // length of data
+            getData: function($defer, params) {
+                $defer.resolve(com.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+            }
+        });
+    });
+}
+```
+Hiện thị thông tin chi tiết của từng user, trong đó hiện thị profile, status, comment, photos...
+
+
+
