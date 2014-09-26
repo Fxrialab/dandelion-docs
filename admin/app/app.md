@@ -110,4 +110,13 @@ Nếu sự kiện authenticated bằng true thì sẽ hiện thị div
 http://admin.dandelionet.org/#!/dashboard/1233333355
 $routeParams.token =  1233333355      
 ```
+- $cookieStore.put('token', results.token): chế độ lưu cookie của angulajs khi đăng nhập
+
+```cpp
+Kiểm tra sự tồn tạ của token, nếu chưa có token thì nó sẽ quay lại trang login
+    if ($cookieStore.get('token')) {
+        $location.path();
+    }
+```
+
 - Data: có file data.js chứa trong forder servies, dùng để kết nối với api bằng phương thức post, get, put, delete...
