@@ -1,3 +1,5 @@
+auth.js
+
 # Login app
 
 Ứng dụng này dùng cho người quản lý đăng nhập vào admin để quản lý toàn bộ dữ liệu trên web.
@@ -56,3 +58,78 @@ api: login
 
 ```
 
+#Logout
+
+```cpp
+$scope.logout = function() {
+        Data.get('logout').then(function(results) {
+            Data.toast(results);
+            $cookieStore.remove('token');
+            $rootScope.wrapper = '';
+            $location.path('login');
+        });
+    }
+```
+$cookieStore.remove('token'): Xóa cookie token
+
+#Register
+
+```cpp
+ $scope.signUp = function(data) {
+        Data.post('register/' + $cookieStore.get('token'), {
+            data: data
+        }).then(function(results) {
+            Data.toast(results);
+            if (results.status == "success") {
+                $location.path('/admin/' + $cookieStore.get('token'));
+            }
+        });
+    };
+```
+Đăng ký thành viên
+
+```cpp
+<form name="signupForm" class="form-horizontal" role="form">
+<div class="form-group">
+<label class="col-sm-5 control-label no-padding-right" for="username">Username</label>
+<div class="col-sm-7">
+<span class="block input-icon input-icon-right">
+<input type="text" class="form-control" placeholder="Username" name="username" ng-model="signup.username" focus/>
+<span ng-show="signupForm.username.$dirty && signupForm.username.$invalid" class="help-inline">Username is not valid</span> 
+</span>
+</div>
+</div>
+                        .........
+<div class="form-group">
+<span class="lbl col-sm-5"> </span>
+<div class="col-sm-7">
+<button type="submit" class="width-35 pull-right btn btn-sm btn-primary" ng-click="signUp(signup)" data-ng-disabled="signupForm.$invalid">
+ Sign Up
+</button>
+</div>
+</div>
+</fieldset>
+</div>
+</form>
+```  
+
+#Profile
+
+```cpp
+    Data.get('profile?token=' + $routeParams.token).then(function(results) {
+        $scope.profile = results;
+    });
+```  
+Lấy thông tin của user đã đăng nhập thành công
+
+```cpp
+$scope.doProfile = function(data) {
+        Data.put('update', {
+            data: data
+        }).then(function(results) {
+            $scope.success = results;
+
+        });
+    };
+```  
+Cập nhật thông tin profile
