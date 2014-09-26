@@ -214,4 +214,128 @@ Dùng để quản lý user, nếu status bằng true thì user đó sẽ hoạt
 Hiện thị thông tin chi tiết của từng user, trong đó hiện thị profile, status, comment, photos...
 
 
+group.js
 
+#List Group
+
+```cpp
+ function getData() {
+        Data.get('groups?token=' + $routeParams.token).then(function(response) {
+            $scope.data = response;
+            var data = response;
+            $scope.tableParams = new ngTableParams({
+                page: 1, // show first page
+                count: 20, // count per page
+                filter: {
+                    name: '', // initial filter
+                }
+            }, {
+                total: data.length, // length of data
+                getData: function($defer, params) {
+                    // use build-in angular filter
+                    var orderedData = params.filter() ?
+                            $filter('filter')(data, params.filter()) :
+                            data;
+
+                    $scope.group = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
+
+                    params.total(orderedData.length); // set total for recalc pagination
+                    $defer.resolve($scope.group);
+                }
+            });
+        });
+    }
+```
+Lấy tất cả các group của tất các thành viên, hiện thị ra view html, trong đó có cơ chế tìm kiếm, sắp xếp, phân trang, các bạn vào trang http://bazalt-cms.com/ng-table/example/1/ để tìm hiểu thêm.
+
+post js
+
+#Lists Posts
+
+```cpp
+  Data.get('posts?token=' + $routeParams.token).then(function(results) {
+        var data = results;
+        $scope.tableParams = new ngTableParams({
+            page: 1, // show first page
+            count: 20, // count per page
+            filter: {
+                content: '', // initial filter
+            }
+        }, {
+            total: data.length, // length of data
+            getData: function($defer, params) {
+                // use build-in angular filter
+                var orderedData = params.filter() ?
+                        $filter('filter')(data, params.filter()) :
+                        data;
+
+                $scope.posts = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
+
+                params.total(orderedData.length); // set total for recalc pagination
+                $defer.resolve($scope.posts);
+            }
+        });
+    });
+```
+Hiện thị danh sách posts của các thành viên ra view html, các bạn có thể tham khảo thêm tại http://bazalt-cms.com/ng-table/example/1/
+
+
+#Lists Comments
+
+```cp
+function getData() {
+        Data.get('comments?sort=' + $routeParams.sort + '&token=' + $routeParams.token).then(function(results) {
+            var data = results;
+            $scope.tableParams = new ngTableParams({
+                page: 1, // show first page
+                count: 20, // count per page
+                filter: {
+                    content: '', // initial filter
+                }
+            }, {
+                total: data.length, // length of data
+                getData: function($defer, params) {
+                    // use build-in angular filter
+                    var orderedData = params.filter() ?
+                            $filter('filter')(data, params.filter()) :
+                            data;
+
+                    $scope.posts = orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count());
+
+                    params.total(orderedData.length); // set total for recalc pagination
+                    $defer.resolve($scope.posts);
+                }
+            });
+        });
+    }
+
+```
+Hiện thị danh sách comment của các thành viên ra view html, các bạn có thể tham khảo thêm tại http://bazalt-cms.com/ng-table/example/1/
+
+return view html 
+
+
+```cpp
+        <table ng-table="tableParams"  show-filter="true" template-pagination="pager" class="table table-bordered table-hover table-striped">
+                            <tr ng-repeat="post in $data">
+                                <td data-title="'Content'" filter="{ 'content': 'text' }">
+                                    {{post.content}}
+                                </td>
+                                <td data-title="'Like'">
+                                    {{post.nLike}}
+                                </td>
+                                <td data-title="'Comment'">
+                                    {{post.nComment}}
+                                </td>
+                                <td data-title="'Owner Name'"  filter="{ 'owner': 'text' }">
+                                    {{post.owner}}
+                                </td>
+<!--                                <td data-title="'Actor Name'">
+                                    {{post.actor}}
+                                </td>-->
+                                <td data-title="'Active'"  filter="{ 'active': 'active'}">
+                                    <a href="javascript:void(0)" class="post_{{post.id}}" ng-click="active(post.recordID)">{{post.active}}</a>
+                                </td>
+                            </tr>
+                        </table>
+```
