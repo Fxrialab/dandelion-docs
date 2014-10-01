@@ -1,7 +1,7 @@
-# API admin gồm có những chức năng như sau:
+# API admin include these functions:
 
-- login: Đăng nhập
-- Register: Đăng ký thành viên quản lý
-- Profile: Thông tin ptofile của mỗi thành viên khi đăng nhập thành công
-- adminactive: cho admin này được quản lý hay không
-- forgotPassword:  thay đổi mật khẩu
+- Login: to sign in the page
+- Register: to register administrator member
+- Profile: saving the profile informations after register successfully.
+- Adminactive: the function of this feature is Allow/Block administrator
+- ForgotPassword:  Change the password
