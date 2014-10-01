@@ -2,10 +2,10 @@ auth.js
 
 # Login app
 
-Ứng dụng này dùng cho người quản lý đăng nhập vào admin để quản lý toàn bộ dữ liệu trên web.
-Chúng tôi viết ứng dụng này bằng angular js, ứng dụng này được viết trong file auht.js.
+This application use for administrator login in admin page to manage all datas on web.
+We write this application by angular js that wrote in file auht.js.
 
-Dưới đây la mã code js
+This is code js
 
 ```cpp
 Dandelion.controller('loginCtrl', function($scope, $rootScope, $location, $http, $cookieStore, Data) {
@@ -70,7 +70,7 @@ $scope.logout = function() {
         });
     }
 ```
-$cookieStore.remove('token'): Xóa cookie token
+$cookieStore.remove('token'): delete cookie token
 
 #Register
 
@@ -86,7 +86,7 @@ $cookieStore.remove('token'): Xóa cookie token
         });
     };
 ```
-Đăng ký thành viên
+Member Register
 
 ```cpp
 <form name="signupForm" class="form-horizontal" role="form">
@@ -120,7 +120,7 @@ $cookieStore.remove('token'): Xóa cookie token
         $scope.profile = results;
     });
 ```  
-Lấy thông tin của user đã đăng nhập thành công
+Get information of successfully register user.
 
 ```cpp
 $scope.doProfile = function(data) {
@@ -132,7 +132,7 @@ $scope.doProfile = function(data) {
         });
     };
 ```  
-Cập nhật thông tin profile
+Update profile information
 
 
 user.js
@@ -172,7 +172,7 @@ user.js
     });
     
 ```
-Lấy tất cả các thành viên đã đăng ký, hiện thị ra view html, trong đó có cơ chế tìm kiếm, sắp xếp, phân trang, các bạn vào trang http://bazalt-cms.com/ng-table/example/1/ để tìm hiểu thêm.
+Get all registered members, so display view html, trong đó có cơ chế tìm kiếm, sắp xếp, phân trang, các bạn vào trang http://bazalt-cms.com/ng-table/example/1/ để tìm hiểu thêm.
 
 ```cpp
     $scope.active = function(id) {
