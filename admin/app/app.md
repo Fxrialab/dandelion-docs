@@ -1,26 +1,26 @@
 # Config app
 
-File app.js gồm có
+File app.js include:
 
-Khai báo app
+Report app
 ```cpp
 var Dandelion = angular.module('dandelionAdminApp')
 ```
 
-Config url cho app
+Config url for app
 ```cpp
 Dandelion.config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider) {
     }])
 ```
-Tìm hiểu thêm tại
+Learn more at:
 
 ```cpp
 https://docs.angularjs.org/api/ngRoute/provider/$routeProvider
 https://docs.angularjs.org/api/ng/provider/$locationProvider
 ```
 
-Ví dụ 
+Example: 
 
 ```cpp
 Dandelion.config(['$routeProvider', '$locationProvider',
@@ -82,27 +82,27 @@ Dandelion.config(['$routeProvider', '$locationProvider',
     });
 });
 ```
-- $rootScope, $scope: là sự giao tiếp giữa controller và view trong angular
- Ví dụ
+- $rootScope, $scope: this is contact between controller and view in angular
+ Example:
 ```cpp
 Controller
 $rootScope.authenticated = true;
 View
 <div ng-if='authenticated' ng-include src="'partials/nav.html'"></div>
-Nếu sự kiện authenticated bằng true thì sẽ hiện thị div
+If authenticated is true so it will show div
 ```
-- $location: get đường dẫn.
+- $location: get Link.
 ```cpp
   $location.path('/login')
   return
   http://admin.dandelionet.org/#!/login
 ```
-- $cookieStore: lưu cookie khi đăng nhập
+- $cookieStore: save cookie when login
 ```cpp
   var token = 1233333355
   $cookieStore.put('token');
 ```
-- $routeParams: lấy điều kiện get id
+- $routeParams: Terms to get id
 ```cpp
 .when('/dashboard/:token', {
             ...
@@ -110,13 +110,13 @@ Nếu sự kiện authenticated bằng true thì sẽ hiện thị div
 http://admin.dandelionet.org/#!/dashboard/1233333355
 $routeParams.token =  1233333355      
 ```
-- $cookieStore.put('token', results.token): chế độ lưu cookie của angulajs khi đăng nhập
+- $cookieStore.put('token', results.token): Save mode cookie of angulajs when login
 
 ```cpp
-Kiểm tra sự tồn tạ của token, nếu chưa có token thì nó sẽ quay lại trang login
+Check the existence of token, if no token so it will be back login page.
     if ($cookieStore.get('token')) {
         $location.path();
     }
 ```
 
-- Data: có file data.js chứa trong forder servies, dùng để kết nối với api bằng phương thức post, get, put, delete...
+- Data: there is file data.js contain in forder servies, that connect to api with methods post, get, put, delete...
