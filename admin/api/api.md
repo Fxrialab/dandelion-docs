@@ -1,50 +1,50 @@
-# Các api của dandelion admin
+# APIS of Dandelion
 
-## API admin: 
+## API Admin: 
 
-- login: Đăng nhập
-- Register: Đăng ký thành viên quản lý
-- Profile: Thông tin ptofile của mỗi thành viên khi đăng nhập thành công
-- adminactive: cho admin này được quản lý hay không
-- forgotPassword:  thay đổi mật khẩu
+- Login: to sign in the page
+- Register: To register the Administrator
+- Profile: Saving the profile information after register successfully
+- adminactive: Allow admin manager or Block
+- forgotPassword:  Change password
 
-## API user:
+## API User:
 
-- users: list tất cả các thành viên đã đăng ký
-- user: hiện thị thông tin chi tiết của mỗi thành viên gồm có thông tin thành viên, số lần post bài, số lần like, comment...
-- useractive: cập nhật status của user, nếu status mà bằng 1 thì hoạt động, ngược lại là không.
+- Users: List all members registered.
+- User: Display detail informationh of each members that include member information, number of posts, number of likes, comment...
+- Useractive: Update status of user, if the status has result 1 so Activity, if not it is Unactivity.
 
-## API posts:
+## API Posts:
 
-- posts: hiện thị tất cả các bài viết của các thành viên.
-- postactive: cho bài biết này được active hay không
+- Posts: Show all posts of members.
+- Postactive: Allow post or Block.
 
-## API comments:
+## API Comments:
 
-- comments: hiện thị tất cả các bình luận của các thành viên.
-- commentactive: cho bài bình luận này được active hay không
+- Comments: Display all comments of members.
+- Commentactive: Allow this comment or Block.
 
-## API groups: 
+## API Groups: 
 
-- groups: hiện thị tất cả các nhóm của các thành viên
+- Groups: Show all groups of members.
 
-## API photos:
+## API Photos:
 
-- photos: hiện thị tất cả các hình ảnh của các thành viên đã đăng.
+- Photos: Show all photos that members post.
 
-## API themes:
+## API Themes:
 
-- themes:  hiện thị tất cả các loại theme
-- install: Cài đặt theme cho web
-- remove: xóa theme
-- detail: chi tiết themes 
+- Themes:  Display all themes.
+- Install: Install Theme for Web
+- Remove: Delete theme
+- Detail: show detail of themes 
 
-## API plugin:
+## API Plugin:
 
-- plugin: hiện thị tất cả các plugin
-- detail: chi tiết plugin
-- install: cài đặt plugin
-- remove: xóa plugin
-- upload: upload các plugin
+- Plugin: show all plugins.
+- Detail: show details of plugin
+- Install: Installing plugins
+- Remove: delete plugin
+- Upload: upload plugins
 
 -
