@@ -172,7 +172,7 @@ user.js
     });
     
 ```
-Get all registered members, so display view html, trong đó có cơ chế tìm kiếm, sắp xếp, phân trang, các bạn vào trang http://bazalt-cms.com/ng-table/example/1/ để tìm hiểu thêm.
+Get all registered members, so view with html, in which there are search instruction, arrangement, paging, so you can learn more in http://bazalt-cms.com/ng-table/example/1/.
 
 ```cpp
     $scope.active = function(id) {
@@ -181,7 +181,7 @@ Get all registered members, so display view html, trong đó có cơ chế tìm 
         });
     }
 ```
-Dùng để quản lý user, nếu status bằng true thì user đó sẽ hoạt động, ngược lại thì không.
+It uses to manage User, if the status is true then it works, if not it will not work.
 
 # Detail user
 
@@ -211,7 +211,7 @@ Dùng để quản lý user, nếu status bằng true thì user đó sẽ hoạt
     });
 }
 ```
-Hiện thị thông tin chi tiết của từng user, trong đó hiện thị profile, status, comment, photos...
+Displaying detail information of user, in which showing profile, status, comment, photos...
 
 
 group.js
@@ -246,7 +246,7 @@ group.js
         });
     }
 ```
-Lấy tất cả các group của tất các thành viên, hiện thị ra view html, trong đó có cơ chế tìm kiếm, sắp xếp, phân trang, các bạn vào trang http://bazalt-cms.com/ng-table/example/1/ để tìm hiểu thêm.
+Get all Groups belong to all member, view with html, in which there are search instruction, arrangement, paging, so you can learn more http://bazalt-cms.com/ng-table/example/1/.
 
 post js
 
@@ -277,7 +277,7 @@ post js
         });
     });
 ```
-Hiện thị danh sách posts của các thành viên ra view html, các bạn có thể tham khảo thêm tại http://bazalt-cms.com/ng-table/example/1/
+Displaying Posts menu in view with html, you can learn more at http://bazalt-cms.com/ng-table/example/1/
 
 
 #Lists Comments
@@ -310,7 +310,7 @@ function getData() {
     }
 
 ```
-Hiện thị danh sách comment của các thành viên ra view html, các bạn có thể tham khảo thêm tại http://bazalt-cms.com/ng-table/example/1/
+Displaying Comment list in view with html, you can learn more at http://bazalt-cms.com/ng-table/example/1/
 
 return view html 
 
@@ -344,7 +344,7 @@ plugin.js
 
 #Plugin
 
-Hiện thị danh sách plugin
+Displaying plugin list
 
 ```cp
     function getData() {
@@ -364,7 +364,7 @@ Hiện thị danh sách plugin
     }
 ```
 
-Cài đặt plugin
+Install plugin
 
 ```cp
     $scope.install = function(data) {
@@ -399,7 +399,7 @@ Remove plugin
 
     };
 ```
-Hiện thị chi tiết plugin trên modal
+Display detail plugin on modal
 ```cp
     $scope.detail = function(id) {
         var modalInstance = $modal.open({
@@ -419,7 +419,7 @@ theme.js
 
 #Theme
 
-Hiện thị danh sách themes
+Display themes lists
 
 ```cp
     function getData() {
@@ -439,7 +439,7 @@ Hiện thị danh sách themes
     }
 ```
 
-Cài đặt theme
+Install theme
 
 ```cp
     $scope.install = function(data) {
@@ -474,7 +474,7 @@ Remove theme
 
     };
 ```
-Hiện thị chi tiết theme trên modal
+Display detail theme on modal
 ```cp
     $scope.detail = function(id) {
         var modalInstance = $modal.open({
