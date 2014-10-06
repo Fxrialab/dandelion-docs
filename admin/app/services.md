@@ -1,6 +1,6 @@
 #Service js
 
-Lấy data từ api
+Get data from Api
 
 ```cpp
 Dandelion.factory("Data", ['$http', 'toaster',
@@ -9,25 +9,25 @@ Dandelion.factory("Data", ['$http', 'toaster',
         var serviceBase = '/api/';
 
         var obj = {};
-        // get dữ liệu vào api
+        // get data to api
         obj.get = function(q) {
             return $http.get(serviceBase + q).then(function(results) {
                 return results.data;
             });
         };
-         // post dữ liệu vào api
+         // post data to api
         obj.post = function(q, object) {
             return $http.post(serviceBase + q, object).then(function(results) {
                 return results.data;
             });
         };
-         // câp nhật dữ liệu vào api
+         // update data to api
         obj.put = function(q, object) {
             return $http.put(serviceBase + q, object).then(function(results) {
                 return results.data;
             });
         };
-         // xó dữ liệu trong api
+         // remove data from api
         obj.delete = function(q) {
             return $http.delete(serviceBase + q).then(function(results) {
                 return results.data;
